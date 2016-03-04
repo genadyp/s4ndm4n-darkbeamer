@@ -1,0 +1,103 @@
+%#######################################%
+% s4ndm4n dark theme for LaTeX beamer   %
+% by Andreas Rümpel <ruempel@gmail.com> %
+% last update: 16 September 2015        %
+%#######################################%
+
+\useinnertheme{circles} % circle item bullets and circle enumeration bullets
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp} % prevent warnings on bullet symbol substitution
+
+\setbeamertemplate{navigation symbols}{}
+
+%### colors definitions
+\definecolor{accent}{HTML}{689F38} %light blue: 0288D1, light green: 689F38
+
+% example box colors
+\setbeamercolor{boxtitlecolor}	{fg=white,bg=accent!55!black}
+\setbeamercolor{boxbodycolor}	{fg=black,bg=white}
+
+% title page colors
+\setbeamercolor{title}		{fg=white,		bg=}
+\setbeamercolor{author}		{fg=black!30,	bg=}
+\setbeamercolor{institute}	{fg=black!30,	bg=}
+\setbeamercolor{date}		{fg=black!30,	bg=}
+\setbeamercolor{subtitle}	{fg=accent!45,	bg=}
+
+% frame title, background and content colors
+\setbeamercolor{background canvas}	{			bg=black}
+\setbeamercolor{frametitle}			{fg=white,	bg=black!70}
+\setbeamercolor{framesubtitle}		{fg=accent!45} %bg does not work
+\setbeamercolor{local structure}	{fg=accent!75!black} %bullets and so on
+\setbeamercolor{alerted text}		{fg=accent!55!black}
+
+% footline colors
+\setbeamercolor{footlinecolor1}{fg=black,bg=black!40}
+\setbeamercolor{footlinecolor2}{fg=white,bg=black!65}
+\setbeamercolor{footlinecolor3}{fg=white,bg=black!75}
+
+
+%### adjust templates and font sizes
+\setbeamertemplate{frametitle}[default][center] % centered frame titles
+\setbeamertemplate{sections/subsections in toc}[circle]
+
+\setbeamerfont{framesubtitle}{size=\large}
+\setbeamerfont{title}{size=\LARGE}
+\setbeamerfont{itemize/enumerate body}{}
+\setbeamerfont{itemize/enumerate subbody}{size=\scriptsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\scriptsize}
+
+
+%### define colored example blocks
+\newsavebox{\squaredblocktext}
+\defbeamertemplate*{block example begin}{squared}{
+  \par\vskip\medskipamount%
+  %\vspace{3mm}  
+  \makebox[\dimexpr\textwidth-1.5ex\relax][l]{%
+  \begin{beamercolorbox}[colsep*=.75ex]{boxtitlecolor}
+	\centering\insertblocktitle\vskip-2pt%
+  \end{beamercolorbox}}%
+  \begin{lrbox}{\squaredblocktext}\begin{minipage}[t]{\textwidth}%
+}
+\defbeamertemplate*{block example end}{squared}{
+  \end{minipage}\end{lrbox}%
+  {\parskip0pt\par}%
+  \makebox[\dimexpr\textwidth-1.5ex\relax][l]{%
+    \begin{beamercolorbox}[colsep*=.75ex,vmode]{boxbodycolor}%
+      \usebox{\squaredblocktext}
+    \end{beamercolorbox}%
+  }\vskip\smallskipamount%
+}
+
+
+%### footline shape and structure
+\setbeamertemplate{footline}
+{
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{footlinecolor1}%
+    \usebeamerfont{title in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{footlinecolor2}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,center]{footlinecolor3}%
+    \usebeamerfont{date in head/foot}
+    \insertshortdate~~~~~~~~\insertframenumber{}\,/\,\inserttotalframenumber 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+%### set background picture
+\setbeamertemplate{background canvas} {\includegraphics[width=\paperwidth,height=\paperheight]{wood}}
+
+%### title page: skip headline and footline
+\renewcommand{\maketitle}{{
+\setbeamertemplate{headline}{} 
+\setbeamertemplate{footline}{}
+\begin{frame}
+  \titlepage
+\end{frame}
+}}

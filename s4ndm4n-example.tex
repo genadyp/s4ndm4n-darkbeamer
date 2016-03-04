@@ -1,0 +1,43 @@
+\documentclass[aspectratio=1610]{beamer}
+\usepackage{s4ndm4n}
+\usepackage{lipsum} % blind text
+
+\title{Example Slide Deck Featuring s4ndm4n Dark Theme}
+\subtitle{To Be Used With \LaTeX{} beamer}
+\author{Andreas Rümpel}
+\institute{s4ndm4n powered by andreasruempel.de}
+\date[2015-09-16]{16 September 2015}
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+	\frametitle{Standard Elements}
+	\framesubtitle{The Frame Subtitle is Optional}
+	\begin{exampleblock}{Box Created From \texttt{exampleblock} With Some Contents}
+		This \texttt{exampleblock} features an item list and includes PDF graphics.
+		\begin{itemize}
+			\item First item
+			\item Second item
+		\end{itemize}
+		\centering
+		\includegraphics[width=0.9\textwidth]{s4ndm4n-logo}
+	\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Another Frame With Multiple Boxes}
+	\begin{exampleblock}{First Box With Text}
+		\lipsum[4]
+	\end{exampleblock}
+	
+	\begin{exampleblock}{Second Box With Enumeration}
+		\begin{enumerate}
+			\item First item with \alert{alerted text}
+			\item Second item
+			\item Third item
+		\end{enumerate}
+		\end{exampleblock}
+\end{frame}
+\end{document}
